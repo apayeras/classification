@@ -1,5 +1,6 @@
 from random import randint
 import bisect 
+import os
 
 lngs = {
 	'de' : True,
@@ -20,14 +21,15 @@ def createFile(lng, content):
 		bisect.insort(newContent, word) 
 
 	print(len(newContent))
-	file = open(f'{lng}2.txt', "w+")
+	file = open(f'{lng}.txt', "w+")
 	for word in newContent:
 		file.write(word)
 	file.close()
 
+path = os.path.dirname(__file__)
 
 for lng, count in lngs.items():
-	file = open(f'/workspaces/AprAut/Practica1/data2/{lng}.txt')
+	file = open(f'{path}/{lng}.txt')
 	content = file.readlines()
 	file.close()
 	createFile(lng, content)
